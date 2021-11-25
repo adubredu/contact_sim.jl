@@ -1,5 +1,6 @@
 using Revise
 using contact_walk
+using Plots
 
 L = 0.4 
 MU = 0.3
@@ -97,7 +98,29 @@ function step(q, v)
     return q¹, v¹
 end
 
-function render(q) 
+function render(traj) 
+    
+   
+    T = 150
+    anim = Animation()
+
+    for t = 1:T
+        plot([-2, 2], [-0.1, -0.1], aspect_ratio=:equal, legend=false, linecolor=:black,
+            linewidth=4, xlims=[-2,2], ylims=[-0.1,2])
+        local_corners = [[-0.2 -0.2 0.2 0.2 -0.2 ];
+                         [-0.2 0.2 0.2 -0.2 -0.2];
+                         [1. 1. 1. 1. 1.]]
+
+        H = [[cos(traj[3, t]) -sin(traj[3, t]) traj[1, t]];
+             [sin(traj[3, t]) cos(traj[3,t]) traj[2, t]];
+             [0. 0. 1]]
+        world_corners = H * local_corners
+
+        plot!([world_corners[1,:]], [world_corners[2,:]], color=:blue, linewidth=2)
+        sleep(0.01)
+        frame(anim)
+    end 
+    gif(anim, "block_sim.gif", fps=15)
 
 end 
 
@@ -113,20 +136,24 @@ function simulate(q₀, v₀)
         push!(v, v¹)
     end
 
-    q = q'
-    v = v'
+    # q = q'
+    # v = v'
     # q = reshape(q, (3,T))
     # v = reshape(v, (3,T))
+    q = hcat(q...)
+    v = hcat(v...)
 
     return q, v 
-end
+end 
 
 function main()
     q₀ = [0.0, 1.5, π/180.0*30.]
     v₀ = [0.0, -0.2, 0.0]
 
     q, v = simulate(q₀, v₀)
+    
     return q, v
 end
 
 q, v = main()
+render(q)
