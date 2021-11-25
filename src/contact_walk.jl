@@ -1,5 +1,9 @@
 module contact_walk
 
-# Write your package code here.
+using JuMP
+using Ipopt
+
+include("lcp_solve.jl")
+export solve_lcp
 
 end
