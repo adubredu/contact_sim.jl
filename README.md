@@ -15,3 +15,8 @@ Example scripts can be found in the [examples](examples) folder in this repo.
 The [block_sim.jl](examples/block_sim.jl) simulates physics of a 2D square block dropped from a height, as shown below:  
 
 ![](media/block_sim.gif)
+
+
+The [ball_sim.jl](examples/ball_sim.jl) simulates physics of a 2D ball dropped from a height, as shown below:  
+
+![](media/ball_sim.gif)

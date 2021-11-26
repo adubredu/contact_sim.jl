@@ -14,6 +14,7 @@ export solve_lcp,
        form_lcp, 
        step, 
        render_block_trajectory,
+       render_ball_trajectory,
        simulate,
        Object,
        Physics 
