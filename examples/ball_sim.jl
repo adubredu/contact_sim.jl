@@ -46,8 +46,8 @@ function main()
     T = 150
 
     #init conditions
-    q₀ = [0.0, 1.5, π/180.0*30.]
-    v₀ = [0.0, -0.2, 0.0] 
+    q₀ = [-1.5, 0.2, π/180.0*30.]
+    v₀ = [2.2, 3.2, 0.0] 
 
     body = Object(l, μ, ϵ, m, R, M)
     physics = Physics(dt, g, Δ, T)

@@ -17,6 +17,10 @@ The [block_sim.jl](examples/block_sim.jl) script simulates physics of a 2D squar
 ![](media/block_sim.gif)
 
 
-The [ball_sim.jl](examples/ball_sim.jl) script simulates physics of a 2D ball dropped from a height, as shown below:  
+The [ball_sim.jl](examples/ball_sim.jl) script simulates physics of a 2D ball, as shown below:  
 
 ![](media/ball_sim.gif)
+
+The [walker_sim.jl](examples/walker_sim.jl) script simulates physics of a 2D dynamic walker, as shown below:  
+
+![](media/walker_sim.gif)

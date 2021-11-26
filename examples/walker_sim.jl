@@ -175,7 +175,7 @@ function animate(ts, zs, walker, steps, fps)
     window_xmin = -1*l; window_xmax = 1*l
     window_ymin = -0.1; window_ymax = 1.1*l
     anim = Plots.Animation()
-    rampref = [min_xh-1 max_xh+1; 0 0]
+    rampref = [min_xh-1 max_xh+1; -0.015 -0.015]
 
     plot(rampref[1,:], rampref[2,:], aspect_ratio=:equal, legend=false, linecolor=:black, linewidth=4,xlims=[window_xmin, window_xmax], ylims=[window_ymin, window_ymax])
 
@@ -198,10 +198,23 @@ function animate(ts, zs, walker, steps, fps)
         plot!([hinge[1], stance_foot[1]], [hinge[2], stance_foot[2]], color=:red, linewidth=2)
         plot!([hinge[1], swing_foot[1]], [hinge[2], swing_foot[2]], color=:blue, linewidth=2)
 
+        # plot!([stance_foot[1]], [stance_foot[2]], markershape=:circle, markercolor=:green, markersize=5)
+        # plot!([swing_foot[1]], [swing_foot[2]], markershape=:circle, markercolor=:green, markersize=5)
+        
+        fl = 0.05
+        stance_feet = [[stance_foot[1] - (fl/2.)*cos(θ₁), stance_foot[2] - (fl/2.)*sin(θ₁)], [stance_foot[1] + (fl/2.)*cos(θ₁), stance_foot[2] + (fl/2.)*sin(θ₁)]]
+
+        swing_feet = [[swing_foot[1] - (fl/2.)*cos(θ₁+θ₂), swing_foot[2] - (fl/2.)*sin(θ₁+θ₂)], [swing_foot[1] + (fl/2.)*cos(θ₁+θ₂), swing_foot[2] + (fl/2.)*sin(θ₁+θ₂)]]
+
+        plot!([stance_feet[1][1], stance_feet[2][1]], [stance_feet[1][2], stance_feet[2][2]], color=:red, linewidth=4)
+
+        plot!([swing_feet[1][1], swing_feet[2][1]], [swing_feet[1][2], swing_feet[2][2]], color=:blue, linewidth=4)
+        # plot!([hinge[1], swing_foot[1]], [hinge[2], swing_foot[2]], color=:blue, linewidth=2)
+
         sleep(0.01)
         frame(anim)
     end
-    gif(anim, "media/walker.gif", fps=15) 
+    gif(anim, "media/walker_sim.gif", fps=15) 
 
 end
 
