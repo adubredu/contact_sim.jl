@@ -1,6 +1,6 @@
 # contact_walk
 
-Contact simulation of passive locomotion of the 2D Dynamic Walker 
+Contact simulation of passive locomotion of the 2D Dynamic Walker by solving Linear Complementarity Problems. 
 
 ## Installation
 1. Open your Julia REPL by typing  `julia` in your terminal.
@@ -12,11 +12,11 @@ Contact simulation of passive locomotion of the 2D Dynamic Walker
 ## Usage
 Example scripts can be found in the [examples](examples) folder in this repo.
 
-The [block_sim.jl](examples/block_sim.jl) simulates physics of a 2D square block dropped from a height, as shown below:  
+The [block_sim.jl](examples/block_sim.jl) script simulates physics of a 2D square block dropped from a height, as shown below:  
 
 ![](media/block_sim.gif)
 
 
-The [ball_sim.jl](examples/ball_sim.jl) simulates physics of a 2D ball dropped from a height, as shown below:  
+The [ball_sim.jl](examples/ball_sim.jl) script simulates physics of a 2D ball dropped from a height, as shown below:  
 
 ![](media/ball_sim.gif)
