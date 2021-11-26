@@ -1,12 +1,13 @@
-function solve_lcp(M, q)
+function solve_lcp(M, q)  
     lcp = Model(Ipopt.Optimizer)
-    N = length(q)
-    init = zeros(N) 
-    @variable(lcp, z[i=1:N] >= init[i])
-    @constraint(lcp,  M*z + q .>= 0.)
-    @constraint(lcp, z'*(M*z + q) .== 0.)
-    @objective(lcp, Min, 1.0)
-    optimize!(lcp)
+    N = length(q) 
+    @variable(lcp, x[1:N])
+    @constraint(lcp,  M*x + q .>= 0.)
+    @constraint(lcp, x .>= 0.)
+    @objective(lcp, Min, x'*(M*x + q))
+    optimize!(lcp) 
+    return value.(x)
 
-    return value.(z)
+    # result = solve!(LCP(M, q))
+    # return result.sol
 end

@@ -83,13 +83,13 @@ function step(q, v)
     fₑ = M*g 
     Jₙ = J[:,2]
     Jₜ = J[:,1]
-    qₚ = [0., Δ, 0.]
+    qₚ = [0., Δ, 0.] 
 
     if ϕ >= Δ
         v¹ = v + dt*Mi*fₑ
         q¹ = q + dt*v¹
     else 
-        V, p = form_lcp(J, v)
+        V, p = form_lcp(J, v) 
         fᵧ = solve_lcp(V, p)
         fₙ = fᵧ[1]; fₜ₁ = fᵧ[2]; fₜ₂ = fᵧ[3]
         v¹ = v + dt*Mi*(fₑ + fₙ*Jₙ - fₜ₁*Jₜ + fₜ₂*Jₜ)
@@ -100,12 +100,10 @@ end
 
 function render(traj) 
     
-   
-    T = 150
     anim = Animation()
 
     for t = 1:T
-        plot([-2, 2], [-0.1, -0.1], aspect_ratio=:equal, legend=false, linecolor=:black,
+        plot([-2, 2], [-0.05, -0.05], aspect_ratio=:equal, legend=false, linecolor=:black,
             linewidth=4, xlims=[-2,2], ylims=[-0.1,2])
         local_corners = [[-0.2 -0.2 0.2 0.2 -0.2 ];
                          [-0.2 0.2 0.2 -0.2 -0.2];
