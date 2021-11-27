@@ -1,6 +1,6 @@
 # contact_walk
 
-Contact simulation of passive locomotion of the 2D Dynamic Walker by solving Linear Complementarity Problems. 
+Contact simulation of locomotion of the 2D Dynamic Walker by solving Linear Complementarity Problems. 
 
 ## Installation
 1. Open your Julia REPL by typing  `julia` in your terminal.
@@ -21,6 +21,6 @@ The [ball_sim.jl](examples/ball_sim.jl) script simulates physics of a 2D ball, a
 
 ![](media/ball_sim.gif)
 
-The [walker_sim.jl](examples/walker_sim.jl) script simulates physics of a 2D dynamic walker, as shown below:  
+The [walker_sim.jl](examples/walker_sim.jl) script simulates physics of a 2D dynamic walker, as shown below. The walking controller uses partial feedback linearization:  
 
-![](media/walker_sim.gif)
+![](media/walker_sim_ctrl.gif)

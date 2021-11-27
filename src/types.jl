@@ -22,3 +22,20 @@ mutable struct Physics
         new(dt,g,Δ,T)
     end
 end
+
+mutable struct Walker{T}
+    M::T
+    m::T
+    I::T
+    l::T
+    c::T
+    g::T
+    γ::T
+    use_controller::Bool
+    tf::T 
+    Kp::T 
+    Θf::T
+    Θ₂::T
+    Θ₂̇ ::T 
+    t₀::T
+end
