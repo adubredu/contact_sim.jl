@@ -4,7 +4,7 @@ q1 = 0.2; u1 = -0.25;
 q2 = -0.4; u2 = 0.2;
 
 z0 = [q1 u1 q2 u2]
-steps = 8
+steps = 4
 fps = 20
 
 #passive: no controller

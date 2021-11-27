@@ -32,6 +32,11 @@ function controller(t, z, walker)
     θ₂̇ᵣ = 5*a5*tt^4 + 4*a4*tt^3 + 3*a3*tt^2 + 2*a2*tt + a1
     θ₂̈ᵣ =   20*a5*tt^3 + 12*a4*tt^2 + 6*a3*tt + 2*a2
 
+    if t >= 4.5
+        println("t = ",t)
+        θ₂ᵣ = 2*θ₂ᵣ
+    end
+
     #partial feedback linearization
     M11 = 2*I + M*l^2 + 2*c^2*m + 2*l^2*m - 2*c*l*m - 2*c*l*m*cos(θ₂)
     M12 = I + c^2*m - c*l*m*cos(θ₂)
@@ -52,6 +57,8 @@ function controller(t, z, walker)
     v = [θ₂̈ᵣ - Kp*e - Kd*ė]
     Minv = Ms\[1. 0.; 0. 1.] 
     u = (Sc*Minv*B)\(v+Sc*Minv*Ns)
+
+    
 
     return (u, θ₂ᵣ, θ₂̇ᵣ, θ₂̈ᵣ)
 
