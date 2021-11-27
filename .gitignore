@@ -1,2 +1,3 @@
 /Manifest.toml
 examples/legacy_walker_sim.jl
+examples/makie_tutorials.jl
