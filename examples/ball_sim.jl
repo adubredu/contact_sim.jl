@@ -53,7 +53,7 @@ function main()
     physics = Physics(dt, g, Δ, T)
 
     q, v = simulate(q₀, v₀, body, physics, get_ball_contacts)
-    render_ball_trajectory(q, body, physics) 
+    render_ball_trajectory(q, body, physics, true) 
 end
  
 main()

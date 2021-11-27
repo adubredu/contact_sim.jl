@@ -3,6 +3,7 @@ module contact_walk
 using JuMP
 using Ipopt 
 using Plots
+using WGLMakie
 using DifferentialEquations
 using Interpolations
 # using LCPsolve

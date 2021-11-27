@@ -63,7 +63,7 @@ function main()
     physics = Physics(dt, g, Δ, T)
 
     q, v = simulate(q₀, v₀, body, physics, get_block_contacts)
-    render_block_trajectory(q, body, physics) 
+    render_block_trajectory(q, body, physics,true) 
 end
  
 main()

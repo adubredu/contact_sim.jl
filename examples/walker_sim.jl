@@ -4,7 +4,7 @@ q1 = 0.2; u1 = -0.25;
 q2 = -0.4; u2 = 0.2;
 
 z0 = [q1 u1 q2 u2]
-steps = 4
+steps = 8
 fps = 20
 
 #passive: no controller
@@ -24,4 +24,4 @@ z_init = [ 0.142819999999995  -0.326813112785275  -0.285640000000000   0.0682438
 zpert = z_init + [0. 0.05 -0.1 0.2]
 
 z, t = simulate_walking(zpert,walker,steps)
-render_walking_trajectory(t,z,walker, steps, fps)
+render_walking_trajectory(t,z,walker, steps, fps,true)
