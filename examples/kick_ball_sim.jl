@@ -10,13 +10,12 @@ walker = Walker(1.0, 0.5, 0.02, 1.0, 0.5, 1.0, 0.01, true, 1.0, 100.0, 0.28564, 
 z_init = [ 0.142819999999995  -0.326813112785275  -0.285640000000000   0.068243824367047]
 zpert = z_init + [0. 0.05 -0.1 0.2]
 
-
 #ball inits 
 l = 0.4 
 μ = 0.3
 ϵ = 0.5
 dt = 0.01
-m = 0.3
+m = 0.04
 g = [0., -9.81, 0.]
 R = (1.0/12.) * (2 * l * l) 
 M = [[m 0. 0.]; 
@@ -27,21 +26,18 @@ Mi = [[1.0/m  0.  0.];
     [0. 0. 1.0/(m*R)]]
 Δ = 0.001
 T = 150 
-q₀ = [0.0, 0.2, π/180.0*30.]
-# v₀ = [4.2, 1.2, 0.0] 
-v₀ = [4.2, 3.2, 0.0] 
+q₀ = [0.0, 0.2, π/180.0*30.] 
 
-
+Torque = 27.9 #hinge motor torque (Nm)
+Fe = Torque*walker.l #kick force (N)
+th = 0.24 #kick angle (rad)
+v₀ = dt*Mi*[Fe*cos(th); Fe*sin(th); 0.0] 
 
 
 body = Object(l, μ, ϵ, m, R, M)
 physics = Physics(dt, g, Δ, T)
 
 zs, ts = simulate_walking(zpert,walker,steps)
-qs, v = simulate(q₀, v₀, body, physics, get_ball_contact_jacobian)
-
-# render_walking_trajectory(t,z,walker, steps, fps,true)
-# render_ball_trajectory(q, body, physics, true)
+qs, v = simulate(q₀, v₀, body, physics, get_ball_contact_jacobian) 
 render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics, true)
-
-t[end]
+ 

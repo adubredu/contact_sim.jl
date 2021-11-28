@@ -57,7 +57,7 @@ function controller(t, z, walker)
     v = [θ₂̈ᵣ - Kp*e - Kd*ė]
     Minv = Ms\[1. 0.; 0. 1.] 
     u = (Sc*Minv*B)\(v+Sc*Minv*Ns)
-
+    println("torque = ",u)
     
 
     return (u, θ₂ᵣ, θ₂̇ᵣ, θ₂̈ᵣ)

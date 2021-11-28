@@ -292,6 +292,7 @@ function render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics,
             stance_feet[] = [Point2f0(xh+l*sin(θ₁) - (fl/2.)*cos(θ₁), yh-l*cos(θ₁) - (fl/2.)*sin(θ₁)), Point2f0(xh+l*sin(θ₁) + (fl/2.)*cos(θ₁), yh-l*cos(θ₁) + (fl/2.)*sin(θ₁))]
             swing_feet[] = [Point2f0(xh+l*sin(θ₁ +θ₂) - (fl/2.)*cos(θ₁+θ₂), yh-l*cos(θ₁+θ₂) - (fl/2.)*sin(θ₁+θ₂)), Point2f0(xh+l*sin(θ₁ +θ₂) + (fl/2.)*cos(θ₁+θ₂), yh-l*cos(θ₁+θ₂) + (fl/2.)*sin(θ₁+θ₂))]  
             if xh >= -0.252
+                # println("attack angle ",θ₂)
                 ballanimstep!(ind)
                 ind+=1
             end
@@ -308,7 +309,7 @@ function render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics,
 
 
 
-    record(fig, "media/kick_sim_makie.gif", 1:T+N; framerate=60) do t
+    record(fig, "media/kick_sim_makie3.gif", 1:T+N; framerate=60) do t
         animstep!(t)
     end
 

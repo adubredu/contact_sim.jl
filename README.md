@@ -24,3 +24,8 @@ The [ball_sim.jl](examples/ball_sim.jl) script simulates physics of a 2D ball, a
 The [walker_sim.jl](examples/walker_sim.jl) script simulates physics of a 2D dynamic walker, as shown below. The walking controller uses partial feedback linearization:  
 
 ![](media/walker_sim_ctrl.gif)
+
+
+The [kick_ball_sim.jl](examples/kick_ball_sim.jl) script simulates physics of a 2D dynamic walker kicking a ball, as shown below. The walking controller uses partial feedback linearization.:  
+
+![](media/kick_sim_makie.gif)
