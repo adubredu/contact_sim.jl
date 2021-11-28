@@ -1,4 +1,4 @@
-using contact_walk  
+using contact_sim  
 
 #walker inits 
 q1 = 0.2; u1 = -0.25;

@@ -1,4 +1,4 @@
-module contact_walk
+module contact_sim
 
 using JuMP
 using Ipopt 
@@ -14,7 +14,7 @@ include("visualize.jl")
 include("lcp_solve.jl")
 include("foot_collision.jl")
 include("controller.jl")
-include("walking_dynamics.jl")
+include("dynamics.jl")
 include("contacts.jl")
 
 export solve_lcp, 

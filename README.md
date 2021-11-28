@@ -1,6 +1,6 @@
-# contact_walk
+# contact_sim
 
-Contact simulation of locomotion of the 2D Dynamic Walker by solving Linear Complementarity Problems. 
+2D Contact physics simulation by solving Linear Complementarity Problems. 
 
 ## Installation
 1. Open your Julia REPL by typing  `julia` in your terminal.

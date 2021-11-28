@@ -1,5 +1,4 @@
-using Revise
-using contact_walk 
+using contact_sim 
   
 
 function main()
