@@ -15,6 +15,7 @@ include("lcp_solve.jl")
 include("foot_collision.jl")
 include("controller.jl")
 include("walking_dynamics.jl")
+include("contacts.jl")
 
 export solve_lcp, 
        form_lcp, 
@@ -22,7 +23,7 @@ export solve_lcp,
        render_block_trajectory,
        render_ball_trajectory,
        render_walking_trajectory,
-       render_kick_trajectory!,
+       render_kick_trajectory,
        simulate,
        Object,
        Physics,
@@ -31,7 +32,9 @@ export solve_lcp,
        controller,
        simulate_walking,
        single_stance!,
-       footstrike
+       footstrike,
+       get_ball_contact_jacobian,
+       get_block_contact_jacobian
 
 
 end

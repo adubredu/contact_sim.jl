@@ -33,7 +33,7 @@ function controller(t, z, walker)
     θ₂̈ᵣ =   20*a5*tt^3 + 12*a4*tt^2 + 6*a3*tt + 2*a2
 
     if t >= 4.5
-        println("t = ",t)
+        # println("t = ",t)
         θ₂ᵣ = 2*θ₂ᵣ
     end
 
