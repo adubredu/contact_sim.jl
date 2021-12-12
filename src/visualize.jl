@@ -225,7 +225,7 @@ end
 
 
 function render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics,   
-                                use_makie::Bool)
+                                use_makie::Bool; trail=true)
     zs_tp = hcat(zs[:,1], zs[:,3], zs[:,5], zs[:,6])
     num_var = 4
     total_frames = Int(round(ts[end]*fps))
@@ -258,6 +258,14 @@ function render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics,
     swing_foot = Observable([Point2f0(0.0, 0.0),Point2f0(0.0, 0.0)])
     stance_feet = Observable([Point2f0(0.0, 0.0),Point2f0(0.0, 0.0)])
     swing_feet = Observable([Point2f0(0.0, 0.0),Point2f0(0.0, 0.0)])
+    tail = 300
+    traj = CircularBuffer{Point2f0}(tail)
+    fill!(traj, Point2f0(0.0, 0.2))
+    traj = Observable(traj)
+
+    c = to_color(:purple)
+    tailcol = [RGBAf0(c.r, c.g, c.b, (i/tail)^2) for i in 1:tail]
+
 
     lc = [0.0; 0.0; 1.0]
     center = Observable(Point2f0(0.1,0.19)) 
@@ -268,6 +276,7 @@ function render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics,
     lines!(ax, swing_foot, color=:blue, linewidth=6)
     lines!(ax, stance_feet, color=:red, linewidth=6)
     lines!(ax, swing_feet, color=:blue, linewidth=6)
+    lines!(ax, traj; linewidth = 3, color = tailcol)
 
     function ballanimstep!(t) 
         if t <= N
@@ -277,6 +286,8 @@ function render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics,
                     [0. 0. 1]]
             wc = H * lc
             center[] = Point2f0(wc[1], wc[2])
+            push!(traj[], Point2f0(wc[1], wc[2]))
+            traj[] = traj[]
             sleep(0.001) 
         end
     end
@@ -309,7 +320,7 @@ function render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics,
 
 
 
-    record(fig, "media/kick_sim_makie3.gif", 1:T+N; framerate=60) do t
+    record(fig, "media/kick100.mp4", 1:T+N; framerate=60) do t
         animstep!(t)
     end
 

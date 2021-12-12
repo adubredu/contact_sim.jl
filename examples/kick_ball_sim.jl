@@ -29,18 +29,19 @@ function main()
     T = 150 
     q₀ = [0.0, 0.2, π/180.0*30.] 
 
-    Torque = 27.9 #hinge motor torque (Nm)
+    Torque = 27.2 #hinge motor torque (Nm)
     Fe = Torque*walker.l #kick force (N)
     th = 0.24 #kick angle (rad)
     v₀ = dt*Mi*[Fe*cos(th); Fe*sin(th); 0.0] 
+    println("Torque: ",Torque," vx: ", v₀[1], " vy: ", v₀[2])
+    # v₀ = [4.2, 3.2, 0.0]
 
+    # body = Object(l, μ, ϵ, m, R, M)
+    # physics = Physics(dt, g, Δ, T)
 
-    body = Object(l, μ, ϵ, m, R, M)
-    physics = Physics(dt, g, Δ, T)
-
-    zs, ts = simulate_walking(zpert,walker,steps)
-    qs, v = simulate(q₀, v₀, body, physics, get_ball_contact_jacobian) 
-    render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics, true)
+    # zs, ts = simulate_walking(zpert,walker,steps)
+    # qs, v = simulate(q₀, v₀, body, physics, get_ball_contact_jacobian) 
+    # render_kick_trajectory(ts, zs, qs, walker, steps, fps, body, physics, true)
 end
 
 main()

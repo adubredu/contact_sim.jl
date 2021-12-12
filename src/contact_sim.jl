@@ -6,6 +6,7 @@ using Plots
 using WGLMakie
 using DifferentialEquations
 using Interpolations
+using DataStructures: CircularBuffer
 # using LCPsolve
 
 include("types.jl")
