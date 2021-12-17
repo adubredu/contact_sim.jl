@@ -2,6 +2,8 @@
 
 2D Contact physics simulation by solving Linear Complementarity Problems. 
 
+For more details, see my related paper: https://arxiv.org/abs/2112.08426
+
 ## Installation
 1. Open your Julia REPL by typing  `julia` in your terminal.
 2. Press `]` on your keyboard to enter the package manager
